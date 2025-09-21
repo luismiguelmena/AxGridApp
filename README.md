@@ -51,24 +51,40 @@ It keeps AxGrid simple to build today while remaining scalable for future growth
 ---
 
 ## 📂 Folder Structure  
-src/
-├── assets/
-│ ├── images/ #Energy types cards images
-│
-├── components/
-│ ├── Card
-│ ├── Charts #Graphics
-│ ├── Form
-│ ├── Select
-│ ├── Table
-│ ├── Tabs
-│ ├── TypeFilter
-│
-├── modules/
-│ ├── Offers/
-│ ├── Stats/ 
-│ └── Trades/
-│
-├── services/ # RxJS 
-├── config/ # Energy type configs
-└── App.tsx
+## 📂 Project Structure Diagram  
+
+```mermaid
+flowchart TD
+
+  subgraph src
+    subgraph assets
+      A1[images<br/>Energy types cards images]
+    end
+
+    subgraph components
+      B1[Card]
+      B2[Charts<br/>Graphics]
+      B3[Form]
+      B4[Select]
+      B5[Table]
+      B6[Tabs]
+      B7[TypeFilter]
+    end
+
+    subgraph modules
+      C1[Offers]
+      C2[Stats]
+      C3[Trades]
+    end
+
+    subgraph services
+      D1[RxJS Streams]
+    end
+
+    subgraph config
+      E1[Energy type configs]
+    end
+
+    F1[App.tsx]
+  end
+
