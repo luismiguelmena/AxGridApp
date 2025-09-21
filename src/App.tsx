@@ -1,35 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect } from "react";
+import "./App.css";
+import { Tab } from "./components/Tabs/Tab";
+import { offersStream$ } from "./config/offerStream";
+import type { EnergyOffering } from "./modules/Offers/interfaces/interfaces";
+import Offers from "./modules/Offers/Offers";
+import Stats from "./modules/Stats/stats";
+import Trades from "./modules/Trades/Trades";
+import { useEnergyStore } from "./store/useEnergyStore";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const { updateOffer, addOffer } = useEnergyStore();
+  const list = [
+    {value: "trades", label: "Create trade", children: <Trades />},
+    {value: "offers", label: "Offers", children: <Offers />},
+    {value: "stats", label: "Stats", children: <Stats />},
+  ]
 
+  useEffect(() => {
+    const sub = offersStream$.subscribe((event) => {
+      if (event.type === "update") {
+        updateOffer(event.index, event.changes);
+      } else if (event.type === "add") {
+        addOffer(event.offer as EnergyOffering);
+      }
+    });
+    return () => sub.unsubscribe();
+  }, [updateOffer, addOffer]);
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Tab list={list} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

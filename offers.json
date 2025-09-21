@@ -1,0 +1,13 @@
+{
+  "type": "wind",
+  "price": 48,
+  "minQuantity": 200,
+  "contractTerms": "24 meses",
+  "paymentTerms": "60 días",
+  "capacity": 80,
+  "location": "Galicia, España",
+  "windSpeed": "20 km/h promedio",
+  "turbineEfficiency": 92,
+  "availability": "24/7",
+  "certifications": "IEC 61400"
+}
