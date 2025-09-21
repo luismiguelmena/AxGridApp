@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import "./App.css";
 import { Tab } from "./components/Tabs/Tab";
-import { offersStream$ } from "./config/offerStream";
+import { offersStream$ } from "./services/offerStream";
 import type { EnergyOffering } from "./modules/Offers/interfaces/interfaces";
 import Offers from "./modules/Offers/Offers";
 import Stats from "./modules/Stats/stats";
@@ -26,6 +26,7 @@ function App() {
     });
     return () => sub.unsubscribe();
   }, [updateOffer, addOffer]);
+  
   return (
     <>
       <Tab list={list} />
