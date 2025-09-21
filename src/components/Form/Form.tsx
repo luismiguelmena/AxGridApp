@@ -27,7 +27,6 @@ export default function EnergyForm() {
   const fields: FieldConfig[] = useMemo(() => getEnergyFields(energyType), [energyType]);
 
   const handleFileUpload = (event: any) => {
-    console.log(event);
     const file = event.target.files[0];
     if (!file) return;
 
@@ -35,7 +34,7 @@ export default function EnergyForm() {
     reader.onload = (e) => {
       try {
         const jsonData = JSON.parse(e?.target?.result as string);
-        console.log(jsonData);
+        setEnergyType(jsonData.type);
         reset(jsonData);
       } catch (err) {
         alert("JSON file is not valid");
@@ -50,11 +49,10 @@ export default function EnergyForm() {
       ...control._formValues,
       confirmed: false,
     } as EnergyOffering);
-    alert(`Offer of ${energyType} published successfully 🚀`);
     reset();
+    alert(`Offer of ${energyType} published successfully 🚀`);
+   
   };
-
-  
 
   return (
       <FormContainerStyle>
@@ -113,7 +111,9 @@ export default function EnergyForm() {
           </Grid>
         </form>
         <Flex direction="row" gap="3" justify="between" mt="8">
-          <input type="file" accept=".json" onChange={handleFileUpload} />
+         
+          <input id="file-upload" type="file" accept=".json" onChange={handleFileUpload}  style={{ display: "none" }}/>
+          <Button onClick={() => document.getElementById("file-upload")?.click()}>Upload JSON file</Button>
           <Button onClick={onSubmit}>Save</Button>
         </Flex>
       </Box>

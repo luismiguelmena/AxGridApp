@@ -56,7 +56,7 @@ export const fetchMockJSON = () => {
           waterFlowRate: 300,
           reservoirLevel: 80,
           regulatoryCompliance: "OK",
-          supplyFlexibility: "Medium",
+          flexibilityOfSupply: "Medium",
           storageCapacity: 500,
           confirmed: false,
         },

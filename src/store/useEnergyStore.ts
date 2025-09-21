@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import type { EnergyOffering } from "../modules/Offers/interfaces/interfaces";
-import { fetchMockJSON } from "../modules/mock";
+import { fetchMockJSON } from "./mock";
 
 
 

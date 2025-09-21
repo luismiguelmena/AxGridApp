@@ -3,6 +3,7 @@ import { useEnergyStore } from "../../../store/useEnergyStore";
 import { useMemo } from "react";
 const PieChart = () => {
   const { offers } = useEnergyStore();
+
   const data = useMemo(() => {
     let confirmedOFfers = 0;
     let pendingOffers = 0;
@@ -18,13 +19,13 @@ const PieChart = () => {
         id: "confirmed",
         label: "Confirmed",
         value: confirmedOFfers,
-        color: "hsl(50, 70%, 50%)"
       },
       { id: "pending", label: "Pending", value: pendingOffers, color: "red" },
     ];
   }, [offers]);
+  
   return (
-    <div style={{height: "400px", width: "400px"}}>
+    <div style={{height: "400px", width: "500px"}}>
     <ResponsivePie
       data={data}
       margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
