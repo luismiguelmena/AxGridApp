@@ -1,5 +1,6 @@
 import { Select } from "@radix-ui/themes";
-import "./styles.css";
+import { SelectTriggerContainer } from "./Select.style";
+
 const SelectComponent = ({
   selectedValue,
   items,
@@ -10,19 +11,24 @@ const SelectComponent = ({
   onChange: (value: string) => void;
 }) => {
   return (
-    <div>
- <Select.Root value={selectedValue} onValueChange={(value) => onChange(value)}>
-	<Select.Trigger className=".SelectTrigger" style={{width: "145px", height: "30px"}}/>
-	<Select.Content>
-		<Select.Group>
-			{items.map((item) => (
-				<Select.Item value={item.value}>{item.label}</Select.Item>
-			))}
-		</Select.Group>
-	</Select.Content>
-</Select.Root>
-    </div>
-   
+    <>
+      <Select.Root
+        value={selectedValue}
+        onValueChange={(value) => onChange(value)}
+      >
+        <SelectTriggerContainer>
+          <Select.Trigger />
+        </SelectTriggerContainer>
+
+        <Select.Content>
+          <Select.Group>
+            {items.map((item) => (
+              <Select.Item value={item.value}>{item.label}</Select.Item>
+            ))}
+          </Select.Group>
+        </Select.Content>
+      </Select.Root>
+    </>
   );
 };
 

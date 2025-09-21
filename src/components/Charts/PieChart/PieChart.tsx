@@ -38,7 +38,6 @@ const PieChart = () => {
       arcLinkLabelsThickness={2}
       arcLinkLabelsColor={{ from: "color" }}
       arcLabelsSkipAngle={10}
-      //arcLabelsTextColor={{ from: "color", modifiers: [["darker", 2]] }}
       legends={[
         {
           anchor: "bottom",
