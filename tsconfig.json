@@ -1,7 +1,12 @@
 {
+  "compilerOptions": {
+    "types": ["cypress", "node"],
+    "baseUrl": "."
+  },
+  "include": ["cypress/**/*.ts"],
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
-  ]
+  ],
 }

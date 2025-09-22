@@ -9,7 +9,8 @@ type Props = {
 
 const CardOffer = ({ offer, image }: Props) => {
   return (
-    <Box minHeight="300px">
+    <div data-testid="card-offer">
+    <Box minHeight="300px" >
         <Inset clip="padding-box" side="top" pb="current">
           <img
             src={image}
@@ -41,6 +42,7 @@ const CardOffer = ({ offer, image }: Props) => {
           </Text>
         )}
     </Box>
+    </div>
   );
 };
 

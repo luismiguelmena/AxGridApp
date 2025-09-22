@@ -113,8 +113,8 @@ export default function EnergyForm() {
         <Flex direction="row" gap="3" justify="between" mt="8">
          
           <input id="file-upload" type="file" accept=".json" onChange={handleFileUpload}  style={{ display: "none" }}/>
-          <Button onClick={() => document.getElementById("file-upload")?.click()}>Upload JSON file</Button>
-          <Button onClick={onSubmit}>Save</Button>
+          <Button data-testid="upload-json" onClick={() => document.getElementById("file-upload")?.click()}>Upload JSON file</Button>
+          <Button data-testid="save" onClick={onSubmit}>Save</Button>
         </Flex>
       </Box>
     </FormContainerStyle>

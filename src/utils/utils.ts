@@ -2,6 +2,9 @@ import type { BaseOffering, EnergyType, SolarOffering, WindOffering, HydroOfferi
 
 
 const energyTypes: EnergyType[] = ["solar", "wind", "hydro", "gas", "kinetic", "thermal"];
+const paymentTerms: string[] = ["Wire transfer", "Credit card", "Bank transfer"];
+const contractTerms: string[] = ["1 year", "2 years", "3 years", "4 years"];
+const locations: string[] = ["Madrid, Spain", "Seville, Spain", "Barcelona, Spain", "Valencia, Spain", "Bilbao, Spain", "Malaga, Spain", "Alicante, Spain", "Murcia, Spain", "Palma de Mallorca, Spain", "Granada, Spain", "Zaragoza, Spain", "Vigo, Spain", "Oviedo, Spain", "Badajoz, Spain", "Córdoba, Spain", "Sevilla, Spain", "Cádiz, Spain", "Málaga, Spain", "Murcia, Spain", "Palma de Mallorca, Spain", "Granada, Spain", "Zaragoza, Spain", "Vigo, Spain", "Oviedo, Spain", "Badajoz, Spain", "Córdoba, Spain", "Sevilla, Spain", "Cádiz, Spain"];
 
 export const generateRandomOffer = (id: number): BaseOffering => {
   const type = energyTypes[Math.floor(Math.random() * energyTypes.length)];
@@ -11,10 +14,10 @@ export const generateRandomOffer = (id: number): BaseOffering => {
     type,
     price: Math.floor(Math.random() * 200) + 50,
     minimumQuantity: Math.floor(Math.random() * 500) + 50,
-    contractTerms: "1 year",
-    paymentTerms: "Wire transfer",
+    contractTerms: contractTerms[Math.floor(Math.random() * contractTerms.length)],
+    paymentTerms: paymentTerms[Math.floor(Math.random() * paymentTerms.length)],
     capacity: Math.floor(Math.random() * 1000) + 100,
-    location: "Random City",
+    location: locations[Math.floor(Math.random() * locations.length)],
     confirmed: false,
   };
 

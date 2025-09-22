@@ -9,7 +9,7 @@ interface TabItem {
 
 export const Tab = ({list}: {list: TabItem[]}) => {
   return (
-    <Tabs.Root defaultValue="offers">
+    <Tabs.Root defaultValue="offers" role="tab">
       <Tabs.List>
         {list.map(item=>{
           return <Tabs.Trigger value={item.value}>{item.label}</Tabs.Trigger>
@@ -18,7 +18,7 @@ export const Tab = ({list}: {list: TabItem[]}) => {
 
       <Box pt="4">
         {list.map(item=>{
-          return <TabItem value={item.value}>{item.children}</TabItem>
+          return <TabItem data-testid={item.value} value={item.value}>{item.children}</TabItem>
         })}
       </Box>
     </Tabs.Root>

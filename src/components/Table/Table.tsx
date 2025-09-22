@@ -76,6 +76,7 @@ const TableComponent = ({ data }: { data: EnergyOffering[] }) => {
                       justifyContent: "center",
                       height: "100%",
                     }}
+                    data-testid="info-icon"
                   >
                     <InfoCircledIcon />
                   </div>
