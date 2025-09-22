@@ -6,6 +6,7 @@
 yarn install
 yarn run dev
 ```
+---
 
 # AxGrid – Architecture Overview
 
@@ -62,8 +63,6 @@ It keeps AxGrid simple to build today while remaining scalable for future growth
 
 ---
 
-## 📂 Folder Structure
-
 ## 📂 Project Structure Diagram
 
 ```mermaid
@@ -97,11 +96,73 @@ flowchart TD
     subgraph config
       E1[Energy type configs]
     end
-
-    F1[App.tsx]
+    subgraph cypress
+      F1
+    end
+    G1[App.tsx]
   end
 
 ```
 
 ## Note:
 - In the module Create Trade you can import a JSON file to complete all the form fields automatically (in the root folder there is a example of the file: offers.json)
+
+## 🧪 Cypress Testing
+
+The project includes comprehensive end-to-end (E2E) testing using **Cypress** to ensure the reliability and functionality of the energy trading platform.
+
+### 🎯 Test Coverage
+
+The E2E tests cover the following key functionalities:
+
+#### **Offers Module Testing** (`Offers.cy.ts`)
+
+- **Page Load & Component Visibility**
+  - Verifies the offers page loads correctly
+  - Ensures all main components (table, filters) are visible
+  - Validates proper data structure display
+
+- **Energy Type Filtering**
+  - Tests all energy type filters: All, Solar, Wind, Gas, Hydro, Thermal, Kinetic
+  - Verifies filtering functionality works correctly
+  - Ensures filter state is maintained during interactions
+
+- **Data Display & Validation**
+  - Validates table headers and data structure
+  - Tests specific mock data accuracy
+  - Verifies proper formatting of prices, quantities, and terms
+
+- **Offer Management**
+  - Tests offer confirmation workflow
+  - Validates status changes (Pending → Confirmed)
+  - Ensures button states update correctly after confirmation
+
+- **User Interactions**
+  - Tests hover effects and info cards
+  - Validates responsive behavior
+  - Ensures graceful handling of edge cases
+
+### 🚀 Running Tests
+
+```bash
+# Run all E2E tests
+yarn cy:run
+```
+
+### 🔧 Test Configuration
+
+- **Base URL**: `localhost:5173` (Vite development server)
+- **Browser**: Default Cypress browser
+- **Test Data**: Uses mock data from `src/store/mock.tsx`
+- **Assertions**: Comprehensive validation of UI elements and data integrity
+
+### 📊 Test Data Validation
+
+The tests validate against the mock data structure:
+- **10 mock offers** across different energy types
+- **Price ranges**: €90-130/MWh
+- **Contract terms**: 1-5 years
+- **Payment methods**: Credit card, Wire transfer, Bank transfer
+- **Capacity ranges**: 100-1200 MW
+
+---
